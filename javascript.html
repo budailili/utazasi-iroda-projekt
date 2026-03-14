@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>JS CRUD - Utazások</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Utazási kínálatunk (Sima JS)</h2>
+    <div id="lista-helye"></div>
+
+    <script>
+        let utak = [
+            { id: 1, cel: "Maldív-szigetek", ar: "450.000 Ft" },
+            { id: 2, cel: "Párizs", ar: "120.000 Ft" },
+            { id: 3, cel: "Tokió", ar: "600.000 Ft" }
+        ];
+
+        function render() {
+            let html = "<ul>";
+            utak.forEach(ut => {
+                html += `<li>${ut.cel} - ${ut.ar} <button onclick="torol(${ut.id})">Törlés</button></li>`;
+            });
+            html += "</ul>";
+            document.getElementById("lista-helye").innerHTML = html;
+        }
+
+        function torol(id) {
+            utak = utak.filter(u => u.id !== id);
+            render();
+        }
+
+        render();
+    </script>
+</body>
+</html>

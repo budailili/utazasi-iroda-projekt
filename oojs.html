@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>OOJS Repülő</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Repülőgép szimuláció (OOJS)</h2>
+    <button onclick="inditas()">Repülő felszállítása</button>
+    <div id="kifuto"></div>
+
+    <script>
+        class Repulo {
+            constructor(tipus) {
+                this.tipus = tipus;
+            }
+            felszall() {
+                const repulogepDiv = document.createElement("div");
+                repulogepDiv.innerHTML = `✈️ ${this.tipus} felszállt!`;
+                repulogepDiv.style.fontSize = "30px";
+                repulogepDiv.style.transition = "transform 3s";
+                document.getElementById("kifuto").appendChild(repulogepDiv);
+                
+                setTimeout(() => {
+                    repulogepDiv.style.transform = "translateX(500px) translateY(-200px)";
+                }, 100);
+            }
+        }
+
+        function inditas() {
+            const gepem = new Repulo("DreamTravel Boeing 747");
+            gepem.felszall();
+        }
+    </script>
+</body>
+</html>
